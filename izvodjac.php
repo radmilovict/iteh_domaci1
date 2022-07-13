@@ -21,17 +21,17 @@ class Izvodjac {
 	public function ubaciIzvodjace($data,$db){
 		
 		if($data['naziv'] === '' || $data['muzika'] === '' || $data['album'] === '' || $data['brojGremija'] === ''){
-			$this->poruka = 'Potrebno je popuniti polja';
+			$this->poruka = 'Potrebno je popuniti sva polja!';
 		
 		} else {
 			if(!(is_numeric($data['brojGremija']))){
-				$this->poruka = 'Broj a ne broj string.';
+				$this->poruka = 'Uneli ste string umesto broja!';
 			} else {
 				$sacuvano = $db->insert('izvodjac', $data);
 			if($sacuvano){
-				$this -> poruka = 'Izvodjac je uspesno unet';
+				$this -> poruka = 'Uspešno ste uneli izvođača.';
 			}else{
-				$this -> poruka = 'Unos izvodjaca je neuspesan.';
+				$this -> poruka = 'Unos izvođača je neuspešan!';
 			}
 			}
 			
