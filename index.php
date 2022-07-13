@@ -3,7 +3,7 @@
 include("db.php");
 include("izvodjac.php");
 
-$db= new MysqliDb('localhost','root','','artists13');
+$db= new MysqliDb('localhost','root','','artists');
 $zanr=$db->get('zanr');
 $kategorija=$db->get('kategorija');
 $poruka = '';
