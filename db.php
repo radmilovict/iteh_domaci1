@@ -118,7 +118,7 @@ class MysqliDb{
      */
     public function rawQuery($query, $bindParams = null)
     {
-        $this->_query = filter_var($query, FILTER_SANITIZE_STRING);
+        $this->_query = filter_var($query, FILTER_UNSAFE_RAW);
         $stmt = $this->_prepareQuery();
 
         if (is_array($bindParams) === true) {
@@ -494,7 +494,7 @@ class MysqliDb{
                     $this->_paramTypeList .= $this->_determineType($val);
                 }
 
-                $this->_query .= '(' . implode($keys, ', ') . ')';
+                $this->_query .= '(' . implode(',',$keys) . ')';
                 $this->_query .= ' VALUES(';
                 while ($num !== 0) {
                     $this->_query .= '?, ';
